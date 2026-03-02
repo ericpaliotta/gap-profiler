@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>gap_profiler.data_types package &#8212; GAP Profiler  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gap-profiler-data-types-package">
+<h1>gap_profiler.data_types package<a class="headerlink" href="#gap-profiler-data-types-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-gap_profiler.data_types.call_graph">
+<span id="gap-profiler-data-types-call-graph-module"></span><h2>gap_profiler.data_types.call_graph module<a class="headerlink" href="#module-gap_profiler.data_types.call_graph" title="Permalink to this heading">¶</a></h2>
+<p>call_graph.py</p>
+<p>this file contains a data structure to store the call graph</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.call_graph.</span></span><span class="sig-name descname"><span class="pre">CallGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>this class stores a graph representation of which functions call one another (i.e. a call tree)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.total_time">
+<span class="sig-name descname"><span class="pre">total_time</span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.total_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>total time taken by the program</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.time_type">
+<span class="sig-name descname"><span class="pre">time_type</span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.time_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>the type of time as a string given in the parser.TimeType class</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph._nodes">
+<span class="sig-name descname"><span class="pre">_nodes</span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph._nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary of the node id’s mapped to the metadata of each node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph._edges">
+<span class="sig-name descname"><span class="pre">_edges</span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph._edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>a list of lists of the form [caller, callee, line called from in caller]
+where the types are [str, str, int]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.CHILDREN_KEY">
+<span class="sig-name descname"><span class="pre">CHILDREN_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'children'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.CHILDREN_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.EDGES_KEY">
+<span class="sig-name descname"><span class="pre">EDGES_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'edges'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.EDGES_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.FILE_ID_KEY">
+<span class="sig-name descname"><span class="pre">FILE_ID_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'file_id'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.FILE_ID_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.FILE_NAME">
+<span class="sig-name descname"><span class="pre">FILE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'call_graph.json'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.FILE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.FUNCTION_KEY">
+<span class="sig-name descname"><span class="pre">FUNCTION_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'function'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.FUNCTION_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.FUNCTION_TIME_KEY">
+<span class="sig-name descname"><span class="pre">FUNCTION_TIME_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'function_time'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.FUNCTION_TIME_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.LINES_KEY">
+<span class="sig-name descname"><span class="pre">LINES_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'lines'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.LINES_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.NODES_KEY">
+<span class="sig-name descname"><span class="pre">NODES_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'nodes'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.NODES_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.RUNTIME_KEY">
+<span class="sig-name descname"><span class="pre">RUNTIME_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'total_runtime'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.RUNTIME_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.TIME_TYPE_KEY">
+<span class="sig-name descname"><span class="pre">TIME_TYPE_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time_type'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.TIME_TYPE_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.TOP_LEVEL_FUNC">
+<span class="sig-name descname"><span class="pre">TOP_LEVEL_FUNC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unscoped'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.TOP_LEVEL_FUNC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.TOTAL_TIME_KEY">
+<span class="sig-name descname"><span class="pre">TOTAL_TIME_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'total_time'</span></em><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.TOTAL_TIME_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gap_profiler.data_processing.html#gap_profiler.data_processing.scope.FunctionCall" title="gap_profiler.data_processing.scope.FunctionCall"><span class="pre">FunctionCall</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a specific function call to the graph with an edge to connect it to the caller</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fc</strong> (<a class="reference internal" href="gap_profiler.data_processing.html#gap_profiler.data_processing.scope.FunctionCall" title="gap_profiler.data_processing.scope.FunctionCall"><em>FunctionCall</em></a>) – a FunctionCall object storing information about the node to be added</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.get_graph">
+<span class="sig-name descname"><span class="pre">get_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_pool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span></span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.get_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns node and edge dicts in form (node dict, edge list)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_pool</strong> (<em>bool</em>) – whether to include node objects which are a pooled representation
+of all calls of each function across the run of the program (i.e. if a function is called
+twice, each with 1ms total time, the pooled node has 2ms total time). Default is False</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>a tuple of the form (node dict, edge list, pooled_nodes dict) where the pooled nodes</dt><dd><p>are only included if include_pool=True</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.call_graph.CallGraph.get_json">
+<span class="sig-name descname"><span class="pre">get_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#gap_profiler.data_types.call_graph.CallGraph.get_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns call graph formatted as a Json string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a Json string of the CallGraph</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.data_types.code_lookup">
+<span id="gap-profiler-data-types-code-lookup-module"></span><h2>gap_profiler.data_types.code_lookup module<a class="headerlink" href="#module-gap_profiler.data_types.code_lookup" title="Permalink to this heading">¶</a></h2>
+<p>code_lookup.py</p>
+<p>this file stores a data type to lookup code in the project.
+This file works can create and store information from json
+files corresponding to the zip archives generated from code profiling</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.code_lookup.</span></span><span class="sig-name descname"><span class="pre">CodeLookup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>this class is a data structure to find code in the code base</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup._zip">
+<span class="sig-name descname"><span class="pre">_zip</span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup._zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>a zipfile object for code retrieval. This attribute should not
+be externally accessed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>zipfile.ZipFile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup._files">
+<span class="sig-name descname"><span class="pre">_files</span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup._files" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary in the form { file id: file path }</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup._functions">
+<span class="sig-name descname"><span class="pre">_functions</span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup._functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary in the form { function name: [file id, start line, end line] }</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.FILES_KEY">
+<span class="sig-name descname"><span class="pre">FILES_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'files'</span></em><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.FILES_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.FILE_FUNCS_KEY">
+<span class="sig-name descname"><span class="pre">FILE_FUNCS_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'file_functions'</span></em><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.FILE_FUNCS_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.FILE_NAME">
+<span class="sig-name descname"><span class="pre">FILE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'code_lookup.json'</span></em><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.FILE_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.FUNCTIONS_KEY">
+<span class="sig-name descname"><span class="pre">FUNCTIONS_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'functions'</span></em><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.FUNCTIONS_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.PROJECT_ROOT_KEY">
+<span class="sig-name descname"><span class="pre">PROJECT_ROOT_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'project_root'</span></em><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.PROJECT_ROOT_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.add_file">
+<span class="sig-name descname"><span class="pre">add_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.add_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a file to the code lookup structure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – the file’s id</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – the file’s absolute path</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.add_function">
+<span class="sig-name descname"><span class="pre">add_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gap_profiler.data_processing.html#gap_profiler.data_processing.scope.FunctionCall" title="gap_profiler.data_processing.scope.FunctionCall"><span class="pre">FunctionCall</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.add_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a function to the registry in the code lookup</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fc</strong> (<a class="reference internal" href="gap_profiler.data_processing.html#gap_profiler.data_processing.scope.FunctionCall" title="gap_profiler.data_processing.scope.FunctionCall"><em>FunctionCall</em></a>) – the data structure associated with a given
+call of the function to be added</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.get_file_content">
+<span class="sig-name descname"><span class="pre">get_file_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.get_file_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns file content given a file id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – the unique ID of the file in the project</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the file content as a string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.get_files">
+<span class="sig-name descname"><span class="pre">get_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.get_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the files dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>files dict of form { integer_id: path }</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.get_filesystem">
+<span class="sig-name descname"><span class="pre">get_filesystem</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.get_filesystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a virtual filesystem</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>a dictionary of form { dir_name: { files: [(id, name)], dir_name: {} … } }</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.get_function">
+<span class="sig-name descname"><span class="pre">get_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.get_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the file and line numbers for a given function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func</strong> (<em>str</em>) – the function name</p></li>
+<li><p><strong>file</strong> (<em>int</em>) – the unique file id which the function is in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list in the form [file id, start line, end line]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.search_files_regex">
+<span class="sig-name descname"><span class="pre">search_files_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.search_files_regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>searches all file names for a given regular expression, returning their ids if any element
+of their path matches exp</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>exp</strong> (<em>str</em>) – a regex to match to the file paths</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of integer file ids which match the given regex</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.set_project_root">
+<span class="sig-name descname"><span class="pre">set_project_root</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.set_project_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>sets the project root</p>
+<p>done so that the correct sub-part of the filesystem will be visualized in the GUI</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>root</strong> (<em>str</em>) – the project root as an absolute path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.data_types.code_lookup.CodeLookup.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#gap_profiler.data_types.code_lookup.CodeLookup.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns json data stored by this class as a string</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.data_types.exceptions">
+<span id="gap-profiler-data-types-exceptions-module"></span><h2>gap_profiler.data_types.exceptions module<a class="headerlink" href="#module-gap_profiler.data_types.exceptions" title="Permalink to this heading">¶</a></h2>
+<p>exceptions.py</p>
+<p>this file contains all custom exception types for the profiler</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.IllegalProfiletype">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">IllegalProfiletype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.exceptions.IllegalProfiletype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.InvalidEndCallStack">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidEndCallStack</span></span><a class="headerlink" href="#gap_profiler.data_types.exceptions.InvalidEndCallStack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.InvalidExitFunction">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidExitFunction</span></span><a class="headerlink" href="#gap_profiler.data_types.exceptions.InvalidExitFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.InvalidTopLevelFunction">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidTopLevelFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.exceptions.InvalidTopLevelFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.UnrecognizedItemOrder">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnrecognizedItemOrder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.exceptions.UnrecognizedItemOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.UnrecognizedLineType">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnrecognizedLineType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.exceptions.UnrecognizedLineType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.UnrecognizedTimeType">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnrecognizedTimeType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.data_types.exceptions.UnrecognizedTimeType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="gap_profiler.data_types.exceptions.UnrecognizedWidgetType">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.data_types.exceptions.</span></span><span class="sig-name descname"><span class="pre">UnrecognizedWidgetType</span></span><a class="headerlink" href="#gap_profiler.data_types.exceptions.UnrecognizedWidgetType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.data_types">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gap_profiler.data_types" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">GAP Profiler</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, 190010425.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/gap_profiler.data_types.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

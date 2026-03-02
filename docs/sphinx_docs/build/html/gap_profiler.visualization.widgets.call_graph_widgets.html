@@ -1,0 +1,564 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>gap_profiler.visualization.widgets.call_graph_widgets package &#8212; GAP Profiler  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gap-profiler-visualization-widgets-call-graph-widgets-package">
+<h1>gap_profiler.visualization.widgets.call_graph_widgets package<a class="headerlink" href="#gap-profiler-visualization-widgets-call-graph-widgets-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-abstract-call-graph-widget-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget" title="Permalink to this heading">¶</a></h2>
+<p>graph_vis_parent.py
+author: 190010425</p>
+<p>This file contains the definition for the parent of all call graph visualization widgets</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.</span></span><span class="sig-name descname"><span class="pre">AbstractCallGraphWidget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gap_profiler.data_types.html#gap_profiler.data_types.call_graph.CallGraph" title="gap_profiler.data_types.call_graph.CallGraph"><span class="pre">CallGraph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>abstract class which contains all shared functionality for call graph visualization widgets</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.call_graph">
+<span class="sig-name descname"><span class="pre">call_graph</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.call_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>the data structure storing the function call graph to be displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="gap_profiler.data_types.html#gap_profiler.data_types.call_graph.CallGraph" title="gap_profiler.data_types.call_graph.CallGraph">CallGraph</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.show_code_func">
+<span class="sig-name descname"><span class="pre">show_code_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.show_code_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>the function to be called for each widget’s button, receives a node
+dict from call_graph as an argument</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.tree_view">
+<span class="sig-name descname"><span class="pre">tree_view</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.tree_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>the view which displays widgets for each of the functions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QTreeView</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.tree_model">
+<span class="sig-name descname"><span class="pre">tree_model</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.tree_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>model to store the hierarchical structure of the function calls</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QStandardItemModel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.apply_filters" title="Permalink to this definition">¶</a></dt>
+<dd><p>this function applies filters to the call tree given parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>func_name</strong> (<em>str</em>) – a string to regex match to the function names in the call tree</p></li>
+<li><p><strong>files</strong> (<em>list</em>) – a list of file IDs such that all functions inside any of the given files and their
+parents are shown upon filtering</p></li>
+<li><p><strong>thresh</strong> (<em>int</em>) – a runtime percentage for which anything under this percentage should be
+filtered out</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.highlight_in_file">
+<span class="sig-name descname"><span class="pre">highlight_in_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.highlight_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights all nodes which represent functions in a given file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – the unique integer id of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.highlight_node">
+<span class="sig-name descname"><span class="pre">highlight_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.highlight_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights the function call with the given string ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em>) – the unique string id of the function in the CallGraph</p></li>
+<li><p><strong>mode</strong> (<em>QItemSelectionModel.SelectionFlags</em>) – the mode to use to select the node</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.order_by">
+<span class="sig-name descname"><span class="pre">order_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget.order_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>orders the widgets by the order given</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>str</em>) – the order to sort the view by as a string from the OrderBy data class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-call-graph-delegate-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate" title="Permalink to this heading">¶</a></h2>
+<p>call_graph_delegate.py
+author: 190010425</p>
+<p>this function contains the class definition for the call graph delegate.
+This delegate takes care of instantiating the element widgets for the call
+graph views</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.</span></span><span class="sig-name descname"><span class="pre">CallGraphVisualizationDelegate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tree_view</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QTreeView</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QStyledItemDelegate</span></code></p>
+<p>delegate for creating widgets for QTreeView indices (for children of AbstractCallGraphWidget)</p>
+<p>To use in child implementations of AbstractCallGraphWidget</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.tree_view">
+<span class="sig-name descname"><span class="pre">tree_view</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.tree_view" title="Permalink to this definition">¶</a></dt>
+<dd><p>the tree view which the widgets are displayed in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QTreeView</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.show_code_func">
+<span class="sig-name descname"><span class="pre">show_code_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.show_code_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>the function called when the show code button (or similar) is pressed
+on the node widgets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.highlight_func">
+<span class="sig-name descname"><span class="pre">highlight_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.highlight_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>the function called when the widget is clicked (not on a particular button)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.createEditor">
+<span class="sig-name descname"><span class="pre">createEditor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QStyleOptionViewItem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QModelIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QWidget</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.createEditor" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates widgets for the views based upon the model index’s widget type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>QWidget</em>) – the widget to be created’s parent</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the widget to display in the view</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QWidget</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="gap_profiler.data_types.html#gap_profiler.data_types.exceptions.UnrecognizedWidgetType" title="gap_profiler.data_types.exceptions.UnrecognizedWidgetType"><strong>UnrecognizedWidgetType</strong></a> – if the DataRoles.WIDGET_TYPE of the given model index is
+    not one of the class attributes of WidgetType</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.paint">
+<span class="sig-name descname"><span class="pre">paint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QPainter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QStyleOptionViewItem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QModelIndex</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.paint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.sizeHint">
+<span class="sig-name descname"><span class="pre">sizeHint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QStyleOptionViewItem</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QModelIndex</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QSize</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_graph_delegate.CallGraphVisualizationDelegate.sizeHint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.call_list">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-call-list-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.call_list module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.call_list" title="Permalink to this heading">¶</a></h2>
+<p>function_list.py
+author: 190010425</p>
+<p>This file contains a class which displays the function calls as a list</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_list.</span></span><span class="sig-name descname"><span class="pre">CallList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gap_profiler.data_types.html#gap_profiler.data_types.call_graph.CallGraph" title="gap_profiler.data_types.call_graph.CallGraph"><span class="pre">CallGraph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget" title="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractCallGraphWidget</span></code></a></p>
+<p>A class for visualization of function calls as a list</p>
+<p>Here each function call is displayed on the same level of a list, with children displaying data about each call</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList._parent_items">
+<span class="sig-name descname"><span class="pre">_parent_items</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList._parent_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary of PyQt5 QStandardItems mapped from their function names. These items are
+what link to the widgets displayed and store data for sorting and filtering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList._child_items">
+<span class="sig-name descname"><span class="pre">_child_items</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList._child_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary of PyQt5 QStandardItems mapped from their unique function ids. These items are
+what link to the widgets displayed and store data for sorting and filtering for the children</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList.highlight_in_file">
+<span class="sig-name descname"><span class="pre">highlight_in_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList.highlight_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights all nodes which represent functions in a given file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – the unique integer id of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList.highlight_node">
+<span class="sig-name descname"><span class="pre">highlight_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SelectionFlag</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list.CallList.highlight_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights a child node with the given id</p>
+<p>note each child node is a function call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em>) – the unique string id of the function call widget to highlight</p></li>
+<li><p><strong>mode</strong> (<em>QItemSelectionModel.SelectionFlag</em>) – the mode to select the nodes with
+usually specified to indicate whether 1 or &gt; 1 node should be selected at a time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.call_list_element">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-call-list-element-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.call_list_element module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.call_list_element" title="Permalink to this heading">¶</a></h2>
+<p>call_list_element.py
+author: 190010425</p>
+<p>defines widgets which can represent data about all calls of a given function for a given
+profile, and more fine-grained data about each call specifically</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.</span></span><span class="sig-name descname"><span class="pre">CallListChild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>widget for individual calls in the call list, rendered as children of pooled functions (parents)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>the unique string ID of the call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.highlight_func">
+<span class="sig-name descname"><span class="pre">highlight_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.highlight_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>the function to be called when this widget is clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.mousePressEvent">
+<span class="sig-name descname"><span class="pre">mousePressEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QMouseEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListChild.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>overridden mouseclick event to link listview and tree view widgets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a0</strong> (<em>QMouseEvent</em>) – not used directly here</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.</span></span><span class="sig-name descname"><span class="pre">CallListParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>widget representing a pooled node (i.e. aggregated data about all calls of a given
+function across a program run)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent.node">
+<span class="sig-name descname"><span class="pre">node</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent.node" title="Permalink to this definition">¶</a></dt>
+<dd><p>the pooled node containing data about the function (as returned from
+CallGraph.get_graph(include_pool=True))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent.show_code_func">
+<span class="sig-name descname"><span class="pre">show_code_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_list_element.CallListParent.show_code_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>the function to be called when the show_code button is pressed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.call_tree">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-call-tree-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.call_tree module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.call_tree" title="Permalink to this heading">¶</a></h2>
+<p>call_tree.py
+author: 190010425</p>
+<p>this file contains an implementation of AbstractCallGraph widget for an expandable
+tree view of the call tree in CallGraph</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_tree.</span></span><span class="sig-name descname"><span class="pre">CallTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="gap_profiler.data_types.html#gap_profiler.data_types.call_graph.CallGraph" title="gap_profiler.data_types.call_graph.CallGraph"><span class="pre">CallGraph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget" title="gap_profiler.visualization.widgets.call_graph_widgets.abstract_call_graph_widget.AbstractCallGraphWidget"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractCallGraphWidget</span></code></a></p>
+<p>This class creates a tree view of the call graph.</p>
+<p>This call tree is expandable and only works
+because call graphs are always acyclic (if each function call is a distinct node)</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree._func_items">
+<span class="sig-name descname"><span class="pre">_func_items</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree._func_items" title="Permalink to this definition">¶</a></dt>
+<dd><p>a dictionary of PyQt5 QStandardItems mapped from their unique function ids. These items are
+what link to the widgets displayed and store data for sorting and filtering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree.highlight_in_file">
+<span class="sig-name descname"><span class="pre">highlight_in_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree.highlight_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights all nodes which represent functions in a given file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – the unique integer id of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree.highlight_node">
+<span class="sig-name descname"><span class="pre">highlight_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree.CallTree.highlight_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>highlights a node with the given id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_id</strong> (<em>str</em>) – the unique string id of the function call widget to highlight</p></li>
+<li><p><strong>mode</strong> (<em>QItemSelectionModel.SelectionFlag</em>) – the mode to select the nodes with
+usually specified to indicate whether 1 or &gt; 1 node should be selected at a time</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element">
+<span id="gap-profiler-visualization-widgets-call-graph-widgets-call-tree-element-module"></span><h2>gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element module<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element" title="Permalink to this heading">¶</a></h2>
+<p>call_tree_element.py
+author: 190010425</p>
+<p>defines a widget which represents a function as an element of the
+function call tree</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.</span></span><span class="sig-name descname"><span class="pre">CallTreeElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QWidget</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">total_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_code_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight_func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>each function in the call tree has a corresponding CallTreeElement</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.show_code_func">
+<span class="sig-name descname"><span class="pre">show_code_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.show_code_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to be called when the show code button is clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.highlight_func">
+<span class="sig-name descname"><span class="pre">highlight_func</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.highlight_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to be called when the item is selected</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Callable</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>the unique string id of the function call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.node">
+<span class="sig-name descname"><span class="pre">node</span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.node" title="Permalink to this definition">¶</a></dt>
+<dd><p>the dictionary of metadata for the function call</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.mousePressEvent">
+<span class="sig-name descname"><span class="pre">mousePressEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QMouseEvent</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#gap_profiler.visualization.widgets.call_graph_widgets.call_tree_element.CallTreeElement.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>overridden mouseclick event to link listview and tree view widgets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>a0</strong> (<em>QMouseEvent</em>) – the clicking event used to highlight the node (not used directly here)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gap_profiler.visualization.widgets.call_graph_widgets">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gap_profiler.visualization.widgets.call_graph_widgets" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">GAP Profiler</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, 190010425.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/gap_profiler.visualization.widgets.call_graph_widgets.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
