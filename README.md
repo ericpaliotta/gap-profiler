@@ -1,5 +1,4 @@
-# CS4098_GAP_Profiler
-This repository contains my Senior Honours Project : Improved Tracing and Profiling for the GAP Language
+# gap-profiler
 
 # Installation Guide
 
