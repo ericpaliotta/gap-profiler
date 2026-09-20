@@ -41,4 +41,4 @@ The source code of the repository is split into three main directories: `gap_pro
 ## Documentation
 all code for this repository is commented in the Google documentation format so that any documentation can be auto-generated. See [this tutorial](https://google.github.io/styleguide/pyguide.html) for a guide on the Google python style guide format. 
 
-The directory `docs` at the top level of this project contains all sphinx and otherwise documentation. This 
+The directory `docs` at the top level of this project contains all sphinx and otherwise documentation. 
